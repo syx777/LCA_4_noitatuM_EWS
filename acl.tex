@@ -1,0 +1,78 @@
+\documentclass[11pt]{article}
+% Use official ACL template if available (e.g., acl.sty)
+% \usepackage{acl}
+\usepackage[hyperfootnotes=false]{hyperref}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{url}
+\renewcommand{\UrlFont}{\ttfamily\small}
+
+\title{SWE-Mutation: A Code Mutation Framework for Software Engineering Tasks}
+
+\author{
+  Author Name\thanks{Add affiliation and funding information} \\
+  Affiliation \\
+  \texttt{email@example.com}
+}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present SWE-Mutation, a framework for code mutation targeting software engineering tasks.
+It provides lightweight AST-based mutation operators and supports batch mutation generation for Python files,
+enabling data augmentation, robustness evaluation, and experiments aligned with the paper's methodology. We describe
+the system design and implementation and provide example usage and experimental interfaces.
+\end{abstract}
+
+\section{Introduction}
+Small code changes can affect semantics, executability, and performance in software engineering and program understanding tasks.
+We generate controlled variants with mutation operators to analyze model sensitivity and generalization to different code forms.
+
+\section{Related Work}
+Briefly summarize mutation testing, program transformation, and data augmentation lines of work and representative methods.
+
+\section{Method}
+We implement three basic mutation operators:
+\begin{itemize}
+  \item Comparison flip (\texttt{flip-comparisons}): swap \texttt{>} with \texttt{<}, \texttt{>=} with \texttt{<=}, and \texttt{==} with \texttt{!=}.
+  \item Negated conditions (\texttt{negate-ifs}): negate the conditions of \texttt{if} statements.
+  \item Plus-minus swap (\texttt{swap-plus-minus}): swap \texttt{+} and \texttt{-} in binary operations.
+\end{itemize}
+Operators are implemented with Python AST, aiming to preserve syntactic correctness and compilability.
+
+\section{System}
+The system consists of:
+\begin{itemize}
+  \item \textbf{mutations}: core operators and AST transforms.
+  \item \textbf{pipeline}: reads input files, applies operators, and writes outputs.
+  \item \textbf{cli}: command-line interface for batch processing and integration.
+\end{itemize}
+Users can quickly generate data via \texttt{python -m swe\_mutation.cli generate}.
+
+\section{Experimental Setup}
+Describe data sources, evaluation tasks, metrics, and baselines. Compare performance under different mutation strengths and combinations.
+
+\section{Results and Analysis}
+Present tables and visualizations. Discuss the impact of operators and combinations, and statistical significance.
+
+\section{Ethics Statement}
+Clarify data/code sources and compliance, avoiding sensitive information and privacy leaks.
+
+\section{Conclusion}
+We release an extensible SWE-Mutation framework supporting convenient code-level mutation generation and experimental reproduction.
+Future work includes richer semantics-preserving/changing operators, cross-language support, and a more complete evaluation suite.
+
+\section*{Acknowledgements}
+We thank collaborators and funding sources. We plan to open-source more operators and use cases to facilitate reproduction and comparison.
+
+\bibliographystyle{acl_natbib}
+\bibliography{refs}
+
+\end{document}
