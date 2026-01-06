@@ -1,0 +1,16 @@
+[project]
+name = "swe-mutation"
+version = "0.1.0"
+description = "A minimal framework for code mutation operators and dataset generation"
+authors = [{ name = "SWE-Mutation Authors" }]
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = ["mutation", "software engineering", "code", "dataset"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
