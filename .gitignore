@@ -6,4 +6,7 @@ dist/
 build/
 *.egg-info/
 examples/output/
+/.catpaw/
+/.specstory/
+
 
